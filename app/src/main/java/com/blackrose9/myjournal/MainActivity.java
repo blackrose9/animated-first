@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
 //                String category = ((TextView)view).getText().toString(); //what does this line even do?
                 Toast.makeText(MainActivity.this, "Toasty", Toast.LENGTH_LONG).show();
-
             }
         });
         mFabBtn.bringToFront();
