@@ -16,7 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     String [] category = new String[] {
             "General", "Private"};
     @BindView(R.id.fabToAll) FloatingActionButton mFabBtn;
@@ -29,29 +29,30 @@ public class MainActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         gridView.setAdapter(new CategoryAdapter(this, category));
 
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
-////                String category = ((TextView)view).getText().toString(); //what does this line even do?
-//                Toast.makeText(MainActivity.this, "Toasty", Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
-        mFabBtn.bringToFront();
-        mFabBtn.setOnClickListener(new View.OnClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EntryListActivity.class);
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+//                String category = ((TextView)view).getText().toString(); //what does this line even do?
+                Toast.makeText(MainActivity.this, "Toasty", Toast.LENGTH_LONG).show();
+
             }
         });
+        mFabBtn.bringToFront();
+        mFabBtn.setOnClickListener(this);
+//                new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, EntryListActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
-//    @Override
-//    public void onClick(View v){
-//        if(v==mfabBtn){
-//            Intent intent = new Intent(MainActivity.this, EntryListActivity.class);
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    public void onClick(View v){
+        if(v==mFabBtn){
+            Intent intent = new Intent(MainActivity.this, EntryListActivity.class);
+            startActivity(intent);
+        }
+    }
 }

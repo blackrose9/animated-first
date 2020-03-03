@@ -15,7 +15,8 @@
         android:layout_centerHorizontal="true"
         android:textSize="50sp"
         android:text="My Journal"
-        android:id="@+id/headerTextView"/>
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/headerTextView" />
 
     <GridView
         android:id="@+id/baseGridView"
@@ -32,13 +33,14 @@
         android:scrollingCache="false"
         android:stretchMode="spacingWidthUniform" />
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabToAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
+        android:layout_margin="20dp"
         android:clickable="true"
         app:backgroundTint="@color/colorAccent"
         app:srcCompat="@drawable/ic_view_day_black_24dp" />
