@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class EntryListActivity extends AppCompatActivity {
     @BindView(R.id.entryListView) ListView mEntryListView;
@@ -16,8 +17,9 @@ public class EntryListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list);
+        ButterKnife.bind(this);
 
-        EntryAdapter adapter = new EntryAdapter(this, android.R.layout.simple_list_item_2, entries);
+        EntryAdapter adapter = new EntryAdapter(this, android.R.layout.simple_list_item_1, entries);
         mEntryListView.setAdapter(adapter);
     }
 }
