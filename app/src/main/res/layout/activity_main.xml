@@ -15,7 +15,6 @@
         android:layout_centerHorizontal="true"
         android:textSize="50sp"
         android:text="My Journal"
-        android:textColor="@color/colorPrimary"
         android:id="@+id/headerTextView" />
 
     <GridView

@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DearDiaryActivity"></activity>
+        <activity android:name=".DearDiaryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.blackrose9.myjournal.DearDiaryActivity"/>
+        </activity>
         <activity android:name=".EntryListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
