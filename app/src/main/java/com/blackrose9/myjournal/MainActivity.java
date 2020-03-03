@@ -39,13 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         mFabBtn.bringToFront();
         mFabBtn.setOnClickListener(this);
-//                new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, EntryListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     @Override

@@ -2,7 +2,9 @@ package com.blackrose9.myjournal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EntryListActivity extends AppCompatActivity {
+public class EntryListActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.entryListView) ListView mEntryListView;
     @BindView(R.id.fabAddEntry) FloatingActionButton mFabAddBtn;
 
@@ -24,5 +26,17 @@ public class EntryListActivity extends AppCompatActivity {
 
         EntryAdapter adapter = new EntryAdapter(this, android.R.layout.simple_list_item_1, entries);
         mEntryListView.setAdapter(adapter);
+
+        mFabAddBtn.bringToFront();
+        mFabAddBtn.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+        if(v==mFabAddBtn){
+            Intent intent = new Intent(EntryListActivity.this, DearDiaryActivity.class);
+            startActivity(intent);
+        }
+    }
+
 }
