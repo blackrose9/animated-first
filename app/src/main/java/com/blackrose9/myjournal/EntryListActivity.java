@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -26,6 +28,13 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
 
         EntryAdapter adapter = new EntryAdapter(this, android.R.layout.simple_list_item_1, entries);
         mEntryListView.setAdapter(adapter);
+
+        mEntryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(EntryListActivity.this, "Bread and Toast", Toast.LENGTH_LONG).show();
+            }
+        });
 
         mFabAddBtn.bringToFront();
         mFabAddBtn.setOnClickListener(this);
