@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/purplepaint"
-        android:contentDescription="purple painting abstract" />
+        app:srcCompat="@drawable/purplesky"
+        android:contentDescription="purple painting abstract"
+        android:alpha="0.7"/>
 
     <TextView
         android:id="@+id/headerTextView"
