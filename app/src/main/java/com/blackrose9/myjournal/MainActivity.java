@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id){
 //                String category = ((TextView)view).getText().toString(); //what does this line even do?
                 Toast.makeText(MainActivity.this, "Toasty", Toast.LENGTH_LONG).show();
             }
