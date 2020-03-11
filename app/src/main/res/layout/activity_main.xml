@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/purplesky"
-        android:contentDescription="purple painting abstract"
+        android:contentDescription="purple sky"
         android:alpha="0.7"/>
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:fontFamily="casual"
-        android:text="My Journal"
+        android:text="@string/mytitle"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -55,6 +55,7 @@
         android:layout_marginBottom="20dp"
         android:clickable="true"
         app:backgroundTint="#FAF8F8"
+        android:focusable="true"
         app:srcCompat="@drawable/ic_view_day_black_24dp" />
 
 </RelativeLayout>
