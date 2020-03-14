@@ -40,6 +40,7 @@ public class CategoryAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View gridView;
         String category = mCategory[position];
+
         if (convertView == null){
             gridView = inflater.inflate(R.layout.category_grid_item, null);
             TextView categoryView = gridView

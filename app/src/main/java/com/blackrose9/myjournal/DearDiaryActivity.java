@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,9 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DearDiaryActivity extends AppCompatActivity implements View.OnClickListener {
+public class DearDiaryActivity extends AppCompatActivity {
     @BindView(R.id.dearDiaryEditText) EditText editText;
-    @BindView(R.id.saveEntry) Button saveBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,6 @@ public class DearDiaryActivity extends AppCompatActivity implements View.OnClick
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        saveBtn.setOnClickListener(this);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,18 +39,14 @@ public class DearDiaryActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    public void onClick(View v) {
-        String entry = editText.getText().toString();
-        Intent intent = new Intent(DearDiaryActivity.this, EntryListActivity.class);
-        intent.putExtra("entries", entry);
-        startActivity(intent);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.submit:
                 Toast.makeText(DearDiaryActivity.this, "Submitted", Toast.LENGTH_LONG).show();
+                String entry = editText.getText().toString();
+                Intent intent = new Intent(DearDiaryActivity.this, EntryListActivity.class);
+                intent.putExtra("entries", entry);
+                startActivity(intent);
                 return true;
             default:
                 Toast.makeText(DearDiaryActivity.this, "Ooops something went wrong", Toast.LENGTH_LONG).show();

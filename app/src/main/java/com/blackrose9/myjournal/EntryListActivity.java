@@ -20,6 +20,7 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
     @BindView(R.id.entryListView) ListView mEntryListView;
     @BindView(R.id.fabAddEntry) FloatingActionButton mFabAddBtn;
 
+    private String[] titles = new String[]{"Day 1", "Day 2", "Day 3"};
     private String[] entries = new String[] { "Day 1: So this thing happened, I was so thrilled", "Day 2: I cannot believe this other thing happened, I am so angry!", "Personal Entry: I had a dream that this amazing thing happened and then I woke up... Bummer..." };
 
     @Override
@@ -33,7 +34,7 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        EntryAdapter adapter = new EntryAdapter(this, android.R.layout.simple_list_item_1, entries);
+        EntryAdapter adapter = new EntryAdapter(this, android.R.layout.simple_list_item_1, titles, entries);
         mEntryListView.setAdapter(adapter);
 
         mEntryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

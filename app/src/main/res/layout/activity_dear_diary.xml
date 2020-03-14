@@ -33,10 +33,4 @@
         android:hint="Dear Diary..."
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/saveEntry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save" />
-
 </LinearLayout>
