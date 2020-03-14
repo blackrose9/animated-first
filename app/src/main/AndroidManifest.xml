@@ -9,19 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DearDiaryActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.blackrose9.myjournal.DearDiaryActivity"/>
-        </activity>
-        <activity android:name=".EntryListActivity">
+        <activity
+            android:name=".DearDiaryActivity"
+            android:parentActivityName=".EntryListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.blackrose9.myjournal.EntryListActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/NoActionBarTheme">
+            android:name=".EntryListActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.blackrose9.myjournal.MainActivity" />
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

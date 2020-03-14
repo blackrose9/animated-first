@@ -42,11 +42,11 @@ public class CategoryAdapter extends BaseAdapter {
         String category = mCategory[position];
         if (convertView == null){
             gridView = inflater.inflate(R.layout.category_grid_item, null);
-            TextView categoryView = (TextView) gridView
-                    .findViewById(R.id.grid_item_letter);
+            TextView categoryView = gridView
+                    .findViewById(R.id.grid_item_name);
             categoryView.setText(category);
         } else {
-            gridView = (View) convertView;
+            gridView = convertView;
         }
         return gridView;
     }
