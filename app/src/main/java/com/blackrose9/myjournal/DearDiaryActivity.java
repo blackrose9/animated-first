@@ -17,6 +17,8 @@ import butterknife.ButterKnife;
 
 public class DearDiaryActivity extends AppCompatActivity {
     @BindView(R.id.dearDiaryEditText) EditText editText;
+    @BindView(R.id.dearDiaryTitle)
+    EditText titleText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class DearDiaryActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             default:
-                Toast.makeText(DearDiaryActivity.this, "Ooops something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(DearDiaryActivity.this, "Boop Bop", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(menuItem);
         }
     }
