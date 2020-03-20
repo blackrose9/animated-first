@@ -36,7 +36,7 @@ public class DearDiaryActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar_menu, menu);
+        menuInflater.inflate(R.menu.submit_menu, menu);
         return true;
     }
 
