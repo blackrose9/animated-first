@@ -4,8 +4,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstanceClass {
-    private static final String BASE_URL = "https://api.myjson.com/bins/";
     private static Retrofit retrofit;
+    private static final String BASE_URL = "https://api.myjson.com/";
 
     public static Retrofit getRetrofit() {
         //builder pattern

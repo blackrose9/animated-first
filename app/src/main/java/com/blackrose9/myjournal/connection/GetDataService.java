@@ -8,6 +8,8 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface GetDataService {
-    @GET("/16kloc")
+    @GET("/bins/dztes")
     Call<List<Entry>> getEntries();
 }
+
+//https://api.myjson.com/bins/dztes
