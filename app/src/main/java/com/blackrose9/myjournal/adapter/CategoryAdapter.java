@@ -1,4 +1,4 @@
-package com.blackrose9.myjournal;
+package com.blackrose9.myjournal.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.blackrose9.myjournal.R;
+
 public class CategoryAdapter extends BaseAdapter {
     private Context mContext;
     private String[] mCategory;
-    public CategoryAdapter (Context context, String[] category) {
+
+    public CategoryAdapter(Context context, String[] category) {
         this.mContext = context;
         this.mCategory = category;
     }
@@ -41,7 +44,7 @@ public class CategoryAdapter extends BaseAdapter {
         View gridView;
         String category = mCategory[position];
 
-        if (convertView == null){
+        if (convertView == null) {
             gridView = inflater.inflate(R.layout.category_grid_item, null);
             TextView categoryView = gridView
                     .findViewById(R.id.grid_item_name);
