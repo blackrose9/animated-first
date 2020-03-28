@@ -12,6 +12,13 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.blackrose9.myjournal.model.Entry;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,10 +27,17 @@ public class DearDiaryActivity extends AppCompatActivity {
     @BindView(R.id.dearDiaryTitle)
     EditText titleText;
 
+    private DatabaseReference mEntryReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dear_diary);
+
+        mEntryReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child("Entries");
 
         ButterKnife.bind(this);
 
@@ -45,7 +59,12 @@ public class DearDiaryActivity extends AppCompatActivity {
         switch (menuItem.getItemId()) {
             case R.id.submit:
                 Toast.makeText(DearDiaryActivity.this, "Submitted", Toast.LENGTH_LONG).show();
+
+                String title = titleText.getText().toString();
                 String entry = editText.getText().toString();
+                //call function to save to firebase DB
+                saveEntryToFirebase(title, entry);
+
                 Intent intent = new Intent(DearDiaryActivity.this, EntryListActivity.class);
                 intent.putExtra("entries", entry);
                 startActivity(intent);
@@ -54,6 +73,12 @@ public class DearDiaryActivity extends AppCompatActivity {
                 Toast.makeText(DearDiaryActivity.this, "Boop Bop", Toast.LENGTH_LONG).show();
                 return super.onOptionsItemSelected(menuItem);
         }
+    }
+
+    private void saveEntryToFirebase(String title, String entry) {
+        Map<String, Entry> entries = new HashMap<>();
+        entries.put("Entry", new Entry(title, entry));
+        mEntryReference.setValue(entries);
     }
 
 }
