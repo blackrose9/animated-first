@@ -20,7 +20,7 @@
         android:ems="10"
         android:fontFamily="casual"
         android:inputType="textPersonName"
-        android:text="Title" />
+        android:hint="Title" />
 
     <EditText
         android:id="@+id/dearDiaryEditText"
