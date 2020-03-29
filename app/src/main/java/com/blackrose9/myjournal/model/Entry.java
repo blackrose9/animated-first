@@ -1,7 +1,7 @@
 package com.blackrose9.myjournal.model;
 
 public class Entry {
-    public int entryId;
+    //    public int entryId;
     public String entryTitle;
     public String entryBody;
     public Notebook notebook;
@@ -17,13 +17,13 @@ public class Entry {
         this.notebook = notebook;
     }
 
-    public int getEntryId() {
-        return entryId;
-    }
-
-    public void setEntryId(int entryId) {
-        this.entryId = entryId;
-    }
+//    public int getEntryId() {
+//        return entryId;
+//    }
+//
+//    public void setEntryId(int entryId) {
+//        this.entryId = entryId;
+//    }
 
     public String getEntryTitle() {
         return entryTitle;

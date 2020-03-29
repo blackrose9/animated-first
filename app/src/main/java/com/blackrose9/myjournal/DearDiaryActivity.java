@@ -16,9 +16,6 @@ import com.blackrose9.myjournal.model.Entry;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -76,9 +73,7 @@ public class DearDiaryActivity extends AppCompatActivity {
     }
 
     private void saveEntryToFirebase(String title, String entry) {
-        Map<String, Entry> entries = new HashMap<>();
-        entries.put("Entry", new Entry(title, entry));
-        mEntryReference.setValue(entries);
+        mEntryReference.push().setValue(new Entry(title, entry));
     }
 
 }
