@@ -30,20 +30,22 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
     private GetDataService dataService;
 
     private DatabaseReference mEntryListReference;
-    private String entries;
+    private ValueEventListener mEntryListReferenceListener;
+//    private List<Entry> entries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list);
 //        fetchDataFromServer();
+//        initializeDisplay();
 
         mEntryListReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child("Entries");
 
-        mEntryListReference.addValueEventListener(new ValueEventListener() {
+        mEntryListReferenceListener = mEntryListReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot entriesSnapshot : dataSnapshot.getChildren()) {
@@ -105,4 +107,9 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mEntryListReference.removeEventListener(mEntryListReferenceListener);
+    }
 }
