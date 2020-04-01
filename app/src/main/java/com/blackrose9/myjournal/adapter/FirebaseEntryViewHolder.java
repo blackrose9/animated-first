@@ -22,6 +22,8 @@ public class FirebaseEntryViewHolder extends RecyclerView.ViewHolder implements 
     View mView;
     Context mContext;
 
+    private static final String TAG = "boo";
+
     public FirebaseEntryViewHolder(@NonNull View itemView) {
         super(itemView);
         this.mView = mView;
@@ -58,7 +60,7 @@ public class FirebaseEntryViewHolder extends RecyclerView.ViewHolder implements 
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.w(TAG, "loading entries is cancelled", databaseError.toException());
             }
         });
     }
