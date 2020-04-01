@@ -2,7 +2,6 @@ package com.blackrose9.myjournal;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +19,6 @@ import com.blackrose9.myjournal.model.Entry;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -58,21 +55,22 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
 
         setUpFirebaseAdapter();
 
-        mEntryListReferenceListener = mEntryListReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot entriesSnapshot : dataSnapshot.getChildren()) {
-                    String entries = entriesSnapshot.getValue().toString();
-//                    Toast.makeText(EntryListActivity.this, entries, Toast.LENGTH_LONG).show();
-                    Log.d("Entries", entries);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "loading entries is cancelled", databaseError.toException());
-            }
-        });
+//        mEntryListReferenceListener = mEntryListReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot entriesSnapshot : dataSnapshot.getChildren()) {
+//                    String entries = entriesSnapshot.getValue().toString();
+////                    Toast.makeText(EntryListActivity.this, entries, Toast.LENGTH_LONG).show();
+//                    Log.d("Entries", entries);
+//                    mFirebaseAdapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Log.w(TAG, "loading entries is cancelled", databaseError.toException());
+//            }
+//        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -100,8 +98,10 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
                 return new FirebaseEntryViewHolder(view);
             }
         };
+//        mFirebaseAdapter.startListening();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+        mFirebaseAdapter.notifyDataSetChanged();
     }
 
 //    private void fetchDataFromServer() {
@@ -122,7 +122,7 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
 //            }
 //        });
 //    }
-
+//
 //    private void initializeDisplay() {
 //        entryListRecyclerView = findViewById(R.id.entryListView);
 //        RecyclerViewCustomAdapter adapter = new RecyclerViewCustomAdapter(this, entries);
@@ -139,23 +139,23 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        mFirebaseAdapter.startListening();
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        if (mFirebaseAdapter!=null){
-//            mFirebaseAdapter.stopListening();
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAdapter.startListening();
+    }
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mEntryListReference.removeEventListener(mEntryListReferenceListener);
-//    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mFirebaseAdapter != null) {
+            mFirebaseAdapter.stopListening();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mEntryListReference.removeEventListener(mEntryListReferenceListener);
+    }
 }

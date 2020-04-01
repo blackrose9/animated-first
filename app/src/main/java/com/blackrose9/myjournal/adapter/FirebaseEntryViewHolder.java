@@ -26,8 +26,8 @@ public class FirebaseEntryViewHolder extends RecyclerView.ViewHolder implements 
 
     public FirebaseEntryViewHolder(@NonNull View itemView) {
         super(itemView);
-        this.mView = mView;
-        this.mContext = mContext;
+        this.mView = itemView;
+        this.mContext = itemView.getContext();
         itemView.setOnClickListener(this);
     }
 
