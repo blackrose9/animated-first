@@ -6,6 +6,9 @@ public class Entry {
     public String entryBody;
     public Notebook notebook;
 
+    public Entry() {
+    }
+
     public Entry(String entryTitle, String entryBody) {
         this.entryTitle = entryTitle;
         this.entryBody = entryBody;
