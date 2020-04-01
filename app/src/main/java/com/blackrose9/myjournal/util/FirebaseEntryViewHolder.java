@@ -1,4 +1,4 @@
-package com.blackrose9.myjournal.adapter;
+package com.blackrose9.myjournal.util;
 
 import android.content.Context;
 import android.util.Log;

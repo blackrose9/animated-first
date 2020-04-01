@@ -13,9 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blackrose9.myjournal.adapter.FirebaseEntryViewHolder;
 import com.blackrose9.myjournal.connection.GetDataService;
 import com.blackrose9.myjournal.model.Entry;
+import com.blackrose9.myjournal.util.FirebaseEntryViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
