@@ -24,4 +24,7 @@ This is a simple journal application, you can add journal entries and view all y
 * User Authentication for privacy and individuality
 
 ### How it looks :)
-- coming soon -
+![MainActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/MainAct.PNG)
+![ListActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/EntryListAct.PNG)
+![NewEntryActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/DearDiaryAct.PNG)
+![DemoNewEntryActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/NewEntry.PNG)
