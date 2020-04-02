@@ -96,7 +96,7 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         ItemTouchHelper.Callback callback = new ItemTouchHelperCallback(mFirebaseAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
-//        mFirebaseAdapter.notifyDataSetChanged();
+        mFirebaseAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -112,20 +112,20 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         super.onStart();
         mFirebaseAdapter.startListening();
     }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        if (mFirebaseAdapter != null) {
-//            mFirebaseAdapter.stopListening();
-//        }
-//    }
-//
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mEntryListReference.removeEventListener(mEntryListReferenceListener);
-//    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mFirebaseAdapter != null) {
+            mFirebaseAdapter.stopListening();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mEntryListReference.removeEventListener(mEntryListReferenceListener);
+    }
 
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
