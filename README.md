@@ -6,7 +6,7 @@ This is a simple journal application, you can add journal entries and view all y
 
 ## How to run the app
 ### APK install
--coming soon-
+https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/app-debug.apk
 
 ### Local Installation
 - Clone this project 
