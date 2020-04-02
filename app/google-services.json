@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "673401496268",
+    "firebase_url": "https://recordit-af53b.firebaseio.com",
+    "project_id": "recordit-af53b",
+    "storage_bucket": "recordit-af53b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673401496268:android:c230d0d51473611009d869",
+        "android_client_info": {
+          "package_name": "com.blackrose9.myjournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673401496268-nihlmqqhv9brg8foac1n2u9e8o7jlch1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blackrose9.myjournal",
+            "certificate_hash": "4b9448761e9b074cc6da34e1b009ce9cb8dfadab"
+          }
+        },
+        {
+          "client_id": "673401496268-6mfpu33radtst9uvilki5fiksrg1au3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJXDj2Tbzmdn8rqpRsLhg2TwlzgsBg2MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673401496268-6mfpu33radtst9uvilki5fiksrg1au3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

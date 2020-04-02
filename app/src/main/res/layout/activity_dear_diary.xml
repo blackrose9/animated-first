@@ -20,12 +20,12 @@
         android:ems="10"
         android:fontFamily="casual"
         android:inputType="textPersonName"
-        android:text="Title" />
+        android:hint="Title" />
 
     <EditText
         android:id="@+id/dearDiaryEditText"
         android:layout_width="380dp"
-        android:layout_height="308dp"
+        android:layout_height="544dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:ems="10"

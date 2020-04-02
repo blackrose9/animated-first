@@ -21,7 +21,6 @@
         android:layout_marginTop="?actionBarSize"
         android:fontFamily="casual"
         android:text="@string/mytitle"
-        android:textColor="@color/colorPrimary"
         android:textSize="50sp"
         android:textStyle="bold" />
 

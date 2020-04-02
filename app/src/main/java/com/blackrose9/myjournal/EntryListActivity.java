@@ -7,37 +7,71 @@ import android.view.View;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blackrose9.myjournal.adapter.RecyclerViewCustomAdapter;
-import com.blackrose9.myjournal.connection.GetDataService;
-import com.blackrose9.myjournal.connection.RetrofitInstanceClass;
+import com.blackrose9.myjournal.adapter.FirebaseEntryAdapter;
 import com.blackrose9.myjournal.model.Entry;
+import com.blackrose9.myjournal.util.FirebaseEntryViewHolder;
+import com.blackrose9.myjournal.util.ItemTouchHelperCallback;
+import com.blackrose9.myjournal.util.OnStartDragListener;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class EntryListActivity extends AppCompatActivity implements View.OnClickListener {
+public class EntryListActivity extends AppCompatActivity implements View.OnClickListener, OnStartDragListener {
+    private static final String TAG = "boo";
     @BindView(R.id.fabAddEntry) FloatingActionButton mFabAddBtn;
+    @BindView(R.id.entryListView)
+    RecyclerView mRecyclerView;
 
-    List<Entry> entries;
-    private RecyclerView entryListRecyclerView;
-    private GetDataService dataService;
+
+    private FirebaseRecyclerAdapter<Entry, FirebaseEntryViewHolder> mFirebaseRecyclerAdapter;
+    private DatabaseReference mEntryListReference;
+    private ValueEventListener mEntryListReferenceListener;
+
+    private FirebaseEntryAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list);
-        fetchDataFromServer();
-
         ButterKnife.bind(this);
+
+
+        mEntryListReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child("Entries");
+
+        setUpFirebaseAdapter();
+
+/*
+        mEntryListReferenceListener = mEntryListReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot entriesSnapshot : dataSnapshot.getChildren()) {
+                    String entries = entriesSnapshot.getValue().toString();
+//                    Toast.makeText(EntryListActivity.this, entries, Toast.LENGTH_LONG).show();
+                    Log.d("Entries", entries);
+                    mFirebaseAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "loading entries is cancelled", databaseError.toException());
+            }
+        });
+*/
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,31 +82,21 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         mFabAddBtn.setOnClickListener(this);
     }
 
-    private void fetchDataFromServer() {
-        dataService = RetrofitInstanceClass.getRetrofit().create(GetDataService.class);
-        Call<List<Entry>> call = dataService.getEntries();
-        call.enqueue(new Callback<List<Entry>>() {
-            @Override
-            public void onResponse(Call<List<Entry>> call, Response<List<Entry>> response) {
-                if (response.code() == 200) {
-                    entries = response.body();
-                    initializeDisplay();
-                }
-            }
+    private void setUpFirebaseAdapter() {
 
-            @Override
-            public void onFailure(Call<List<Entry>> call, Throwable t) {
+        FirebaseRecyclerOptions<Entry> options = new FirebaseRecyclerOptions.Builder<Entry>()
+                .setQuery(mEntryListReference, Entry.class)
+                .build();
 
-            }
-        });
-    }
+        mFirebaseAdapter = new FirebaseEntryAdapter(options, mEntryListReference, this, this);
 
-    private void initializeDisplay() {
-        entryListRecyclerView = findViewById(R.id.entryListView);
-        RecyclerViewCustomAdapter adapter = new RecyclerViewCustomAdapter(this, entries);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        entryListRecyclerView.setAdapter(adapter);
-        entryListRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mFirebaseAdapter);
+        mRecyclerView.setHasFixedSize(true);
+        ItemTouchHelper.Callback callback = new ItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+        mFirebaseAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -83,4 +107,27 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mFirebaseAdapter != null) {
+            mFirebaseAdapter.stopListening();
+        }
+    }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mEntryListReference.removeEventListener(mEntryListReferenceListener);
+//    }
+
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
+    }
 }
