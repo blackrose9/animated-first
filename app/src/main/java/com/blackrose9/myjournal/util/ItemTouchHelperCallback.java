@@ -12,6 +12,11 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
     }
 
     @Override
+    public boolean isLongPressDragEnabled() {
+        return true;
+    }
+
+    @Override
     public boolean isItemViewSwipeEnabled() {
         return true;
     }
@@ -25,7 +30,11 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-        return false;
+        if (viewHolder.getItemViewType() != target.getItemViewType()) {
+            return false;
+        }
+        mAdapter.onItemMove(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        return true;
     }
 
     @Override
