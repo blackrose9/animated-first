@@ -39,6 +39,7 @@ public class FirebaseEntryAdapter extends FirebaseRecyclerAdapter<Entry, Firebas
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
+        notifyItemMoved(fromPosition, toPosition);
         return false;
     }
 
