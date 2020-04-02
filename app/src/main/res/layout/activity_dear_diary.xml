@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DearDiaryActivity">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="How was your day today?"-->
-<!--        android:textSize="24sp"-->
-<!--        android:textAlignment="center"-->
-<!--        android:layout_marginTop="10dp"/>-->
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize" />
+
+    <EditText
+        android:id="@+id/dearDiaryTitle"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:inputType="textPersonName"
+        android:hint="Title" />
 
     <EditText
         android:id="@+id/dearDiaryEditText"
         android:layout_width="380dp"
-        android:layout_height="200dp"
+        android:layout_height="544dp"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_weight="1"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:fontFamily="casual"
         android:gravity="start|top"
         android:hint="Dear Diary..."
         android:inputType="textMultiLine" />
-
-    <Button
-        android:id="@+id/saveEntry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save" />
 
 </LinearLayout>

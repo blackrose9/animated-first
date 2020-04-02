@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyJournal</string>
+    <string name="getquote">QuoteOfTheDay</string>
+    <string name="mytitle">My Journal</string>
+    <string name="catTitle">Category</string>
+    <string name="catName">Category Name</string>
 </resources>
