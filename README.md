@@ -2,11 +2,11 @@
 #### By blackrose9
 
 ### Description
-This is a simple journal application, you can add journal entries and save them categorically.
+This is a simple journal application, you can add journal entries and view all your journal entries, re-order them and delete unwanted entries
 
 ## How to run the app
-### Play Store
--not available yet-
+### APK install
+-coming soon-
 
 ### Local Installation
 - Clone this project 
@@ -14,10 +14,14 @@ This is a simple journal application, you can add journal entries and save them 
 - You can use either the emulator or install the app on your phone.
 
 ### Known Bugs
-categories are not toasting... yes they're supposed to.
+* Categories on the first activity are not toasting... yes they're supposed to.
+* Re-ordering the list of journal entries is not persistent yet.
 
 ### Future Works
-* pass user journal entries to the list of entries
-* categorize journal entries
-* design list of entries to appear as separate cards for each entry.
-* add quotes for the day(API)
+* Categorize journal entries into notebooks and add new notebooks
+* Add  long press to select multiple items for deleting (and also confirm delete prompt)
+* UI improvements needed
+* User Authentication for privacy and individuality
+
+### How it looks :)
+- coming soon -

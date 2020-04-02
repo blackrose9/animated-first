@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:clickable="true"
+    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
@@ -17,7 +18,7 @@
             android:layout_width="60sp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Category"
+            android:text="@string/catTitle"
             android:textSize="15sp"/>
 
         <TextView
@@ -25,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Category Name"
+            android:text="@string/catName"
             android:textSize="30sp" />
     </LinearLayout>
 

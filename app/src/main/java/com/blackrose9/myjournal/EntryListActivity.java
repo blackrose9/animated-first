@@ -121,11 +121,11 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mEntryListReference.removeEventListener(mEntryListReferenceListener);
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mEntryListReference.removeEventListener(mEntryListReferenceListener);
+//    }
 
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
