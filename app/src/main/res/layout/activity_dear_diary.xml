@@ -13,10 +13,10 @@
 
     <EditText
         android:id="@+id/dearDiaryTitle"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:fontFamily="casual"
         android:inputType="textPersonName"
@@ -24,10 +24,10 @@
 
     <EditText
         android:id="@+id/dearDiaryEditText"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="544dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:fontFamily="casual"
         android:gravity="start|top"
