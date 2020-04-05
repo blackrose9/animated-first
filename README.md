@@ -23,7 +23,7 @@ https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/app-d
 * User Authentication for privacy and individuality
 
 ### How it looks :)
-![MainActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/mainact.PNG)
-![ListActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/entrylistact.PNG)
-![NewEntryActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/deardiaryact.PNG)
-![DemoNewEntryActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/newentry.PNG)
+![MainActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/mainAct.PNG)
+![ListActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/entryListAct.PNG)
+![NewEntryActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/dearDiaryAct.PNG)
+![DemoNewEntryActivity](https://github.com/blackrose9/animated-first/blob/androidFour/app/src/main/res/drawable/newEntry.PNG)
