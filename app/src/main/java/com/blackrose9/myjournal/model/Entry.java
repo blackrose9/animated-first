@@ -1,32 +1,35 @@
 package com.blackrose9.myjournal.model;
 
 public class Entry {
-    //    public int entryId;
+    public String index;
     public String entryTitle;
     public String entryBody;
     public Notebook notebook;
+
 
     public Entry() {
     }
 
     public Entry(String entryTitle, String entryBody) {
+        this.index = "not specified";
         this.entryTitle = entryTitle;
         this.entryBody = entryBody;
     }
 
     public Entry(String entryTitle, String entryBody, Notebook notebook) {
+        this.index = "not specified";
         this.entryTitle = entryTitle;
         this.entryBody = entryBody;
         this.notebook = notebook;
     }
 
-//    public int getEntryId() {
-//        return entryId;
-//    }
-//
-//    public void setEntryId(int entryId) {
-//        this.entryId = entryId;
-//    }
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
 
     public String getEntryTitle() {
         return entryTitle;

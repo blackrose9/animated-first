@@ -21,6 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
@@ -45,12 +46,6 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_list);
         ButterKnife.bind(this);
-
-
-        mEntryListReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child("Entries");
 
         setUpFirebaseAdapter();
 
@@ -83,12 +78,17 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void setUpFirebaseAdapter() {
+        Query query = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child("Entries")
+                .orderByChild("index");
 
         FirebaseRecyclerOptions<Entry> options = new FirebaseRecyclerOptions.Builder<Entry>()
-                .setQuery(mEntryListReference, Entry.class)
+                .setQuery(query, Entry.class)
                 .build();
 
-        mFirebaseAdapter = new FirebaseEntryAdapter(options, mEntryListReference, this, this);
+        mFirebaseAdapter = new FirebaseEntryAdapter(options, query, this, this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
@@ -121,11 +121,11 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mEntryListReference.removeEventListener(mEntryListReferenceListener);
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mFirebaseAdapter.stopListening();
+    }
 
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         mItemTouchHelper.startDrag(viewHolder);
