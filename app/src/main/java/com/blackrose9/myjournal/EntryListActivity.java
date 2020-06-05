@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blackrose9.myjournal.adapter.FirebaseEntryAdapter;
 import com.blackrose9.myjournal.model.Entry;
 import com.blackrose9.myjournal.util.FirebaseEntryViewHolder;
+import com.blackrose9.myjournal.util.FirebasePersistence;
 import com.blackrose9.myjournal.util.ItemTouchHelperCallback;
 import com.blackrose9.myjournal.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
@@ -78,8 +78,7 @@ public class EntryListActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void setUpFirebaseAdapter() {
-        Query query = FirebaseDatabase
-                .getInstance()
+        Query query = FirebasePersistence.getFirebaseDatabase()
                 .getReference()
                 .child("Entries")
                 .orderByChild("index");

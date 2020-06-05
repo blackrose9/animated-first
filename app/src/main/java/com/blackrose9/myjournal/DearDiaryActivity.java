@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.blackrose9.myjournal.model.Entry;
+import com.blackrose9.myjournal.util.FirebasePersistence;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,8 +31,7 @@ public class DearDiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dear_diary);
 
-        mEntryReference = FirebaseDatabase
-                .getInstance()
+        mEntryReference = FirebasePersistence.getFirebaseDatabase()
                 .getReference()
                 .child("Entries");
 
